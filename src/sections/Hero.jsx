@@ -1,98 +1,126 @@
-import CountdownTimer from '../components/CountdownTimer';
+import { useState, useEffect, useRef } from 'react';
 import Button from '../components/Button';
-import { ArrowDown, ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
+
+function Countdown() {
+  const [count, setCount] = useState(10);
+  const [isZero, setIsZero] = useState(false);
+  const timerRef = useRef(null);
+
+  const start = () => {
+    setCount(10); setIsZero(false);
+    timerRef.current = setInterval(() => {
+      setCount(p => {
+        if (p <= 1) { clearInterval(timerRef.current); setIsZero(true); setTimeout(start, 2800); return 0; }
+        return p - 1;
+      });
+    }, 1000);
+  };
+
+  useEffect(() => { start(); return () => clearInterval(timerRef.current); }, []); // eslint-disable-line
+
+  const r = 40, circ = 2 * Math.PI * r;
+  return (
+    <div className={`relative w-20 h-20 flex-shrink-0 ${isZero ? 'pulse-blue' : ''}`}>
+      <svg className="w-full h-full -rotate-90" viewBox="0 0 88 88">
+        <circle cx="44" cy="44" r={r} fill="none" stroke="#DDE5F8" strokeWidth="6" />
+        <circle cx="44" cy="44" r={r} fill="none"
+          stroke={isZero ? '#FF6B35' : '#2E5CFF'} strokeWidth="6" strokeLinecap="round"
+          strokeDasharray={circ} strokeDashoffset={circ - (count / 10) * circ}
+          className="countdown-ring" />
+      </svg>
+      <div className="absolute inset-0 flex items-center justify-center">
+        <span className={`font-black text-2xl mono leading-none ${isZero ? 'text-[#FF6B35]' : 'text-[#2E5CFF]'}`}>
+          {isZero ? '!' : count}
+        </span>
+      </div>
+    </div>
+  );
+}
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A1628]">
-      {/* Animated gradient background */}
-      <div
-        className="absolute inset-0 gradient-animated opacity-80"
-        style={{
-          background:
-            'linear-gradient(135deg, #0A1628 0%, #0D1F3C 25%, #0A2550 50%, #0D1F3C 75%, #0A1628 100%)',
-        }}
-      />
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white pt-16">
 
-      {/* Grid overlay */}
-      <div
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage: `linear-gradient(rgba(46,92,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(46,92,255,0.5) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px',
-        }}
-      />
+      {/* Background blobs */}
+      <div className="absolute top-0 left-0 right-0 bottom-0 overflow-hidden pointer-events-none">
+        <div className="blob-animate absolute -top-32 -left-32 w-[600px] h-[600px] bg-[#2E5CFF]/8 rounded-full blur-[100px]" />
+        <div className="blob-animate-alt absolute -bottom-40 -right-32 w-[500px] h-[500px] bg-[#00D4FF]/6 rounded-full blur-[120px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#2E5CFF]/4 rounded-full blur-[80px]" />
+      </div>
 
-      {/* Glow blobs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#2E5CFF]/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#00D4FF]/10 rounded-full blur-3xl" />
+      {/* Dot grid */}
+      <div className="absolute inset-0 opacity-[0.035] pointer-events-none"
+        style={{ backgroundImage: 'radial-gradient(#2E5CFF 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-32 md:py-40">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 bg-[#2E5CFF]/20 border border-[#2E5CFF]/40 text-[#00D4FF] text-sm font-medium px-4 py-2 rounded-full mb-8">
-          <span className="w-2 h-2 bg-[#10B981] rounded-full animate-pulse" />
-          50+ artisans IDF nous font confiance
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-5 sm:px-8 text-center py-16 md:py-24">
+
+        {/* Top badge */}
+        <div className="inline-flex items-center gap-2 bg-[#F0F5FF] border border-[#C5D3F8] text-[#2E5CFF] text-xs sm:text-sm font-semibold px-4 py-2 rounded-full mb-10">
+          <span className="w-2 h-2 bg-[#10B981] rounded-full animate-pulse flex-shrink-0" />
+          50+ artisans IDF · 2 847 appels traités ce mois · 97% satisfaction
         </div>
 
-        {/* Countdown */}
-        <div className="flex justify-center mb-8">
-          <CountdownTimer />
+        {/* Countdown + headline bloc */}
+        <div className="flex flex-col items-center gap-6 mb-8">
+          <Countdown />
+
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-black text-[#0A1628] leading-[1.05] tracking-tight">
+            Vous avez{' '}
+            <span className="text-gradient">10 secondes</span>
+            <br />pour décider.
+          </h1>
         </div>
 
-        {/* Title */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight mb-8">
-          Vous avez 10 secondes
-          <br />
-          <span className="text-[#2E5CFF]">pour décider.</span>
-        </h1>
-
-        {/* Choice */}
-        <div className="max-w-3xl mx-auto mb-10 space-y-4">
-          <div className="bg-red-500/10 border border-red-500/30 rounded-2xl p-5">
-            <p className="text-white/70 text-lg">
+        {/* Choices */}
+        <div className="max-w-2xl mx-auto space-y-3 mb-10">
+          <div className="flex items-start gap-3 bg-[#FFF5F5] border border-[#FFCDD2] rounded-2xl px-5 py-4 text-left">
+            <span className="text-lg mt-0.5 flex-shrink-0">❌</span>
+            <p className="text-[#64748B] text-sm sm:text-base leading-relaxed">
               Soit vous fermez cet onglet et continuez à perdre{' '}
-              <strong className="text-red-400">2 400€/mois.</strong>
+              <strong className="text-[#DC2626]">2 400€/mois</strong> en appels ratés.
             </p>
           </div>
-
-          <div className="bg-[#2E5CFF]/10 border border-[#2E5CFF]/40 rounded-2xl p-5">
-            <p className="text-white text-lg leading-relaxed">
-              Soit vous découvrez comment <strong className="text-[#00D4FF]">Fixlyy</strong> répond à vos appels{' '}
-              <strong>24/7</strong>, génère vos devis automatiquement, et vous fait gagner{' '}
-              <strong className="text-[#10B981]">3h par jour.</strong>
+          <div className="flex items-start gap-3 bg-[#F0F5FF] border border-[#C5D3F8] rounded-2xl px-5 py-4 text-left">
+            <span className="text-lg mt-0.5 flex-shrink-0">✅</span>
+            <p className="text-[#0A1628] text-sm sm:text-base leading-relaxed">
+              Soit <strong className="text-[#2E5CFF]">Fixlyy</strong> répond à vos appels{' '}
+              <strong>24/7</strong>, génère vos devis auto, vous fait gagner{' '}
+              <strong className="text-[#10B981]">3h/jour</strong> — pour{' '}
+              <strong className="mono text-[#2E5CFF] text-lg">79€</strong>
+              <span className="text-[#64748B]">/mois</span>.
             </p>
           </div>
-
-          <p className="text-2xl font-bold text-white">
-            Pour le prix d'un seul appel raté :{' '}
-            <span className="mono text-[#FF6B35] text-3xl">79€</span>
-            <span className="text-white/60 text-lg">/mois</span>
-          </p>
         </div>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button variant="primary" size="lg">
-            Je choisis Fixlyy <ArrowRight size={20} />
+        <div className="flex flex-col sm:flex-row gap-3 justify-center items-stretch sm:items-center mb-6">
+          <Button variant="primary" size="xl"
+            onClick={() => document.getElementById('inscription')?.scrollIntoView({ behavior: 'smooth' })}>
+            Essayer Fixlyy gratuitement <ArrowRight size={18} />
           </Button>
-          <Button variant="ghost" size="lg">
-            <ArrowDown size={20} /> Montrez-moi comment
+          <Button variant="secondary" size="xl"
+            onClick={() => document.getElementById('comment-ca-marche')?.scrollIntoView({ behavior: 'smooth' })}>
+            Voir comment ça marche
           </Button>
         </div>
 
-        {/* Trust */}
-        <p className="mt-6 text-white/40 text-sm">
-          Sans carte bancaire · Sans engagement · Setup 30min offert
-        </p>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30">
-        <span className="text-xs">Défiler</span>
-        <div className="w-5 h-8 border border-white/20 rounded-full flex items-start justify-center pt-1.5">
-          <div className="w-1 h-2 bg-white/40 rounded-full animate-bounce" />
+        {/* Trust strip */}
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[#94A3B8] text-xs sm:text-sm">
+          <span>✓ Sans carte bancaire</span>
+          <span className="hidden sm:inline">·</span>
+          <span>✓ 7 jours gratuits</span>
+          <span className="hidden sm:inline">·</span>
+          <span>✓ Setup 30min offert</span>
+          <span className="hidden sm:inline">·</span>
+          <span>✓ Résiliable à tout moment</span>
         </div>
       </div>
+
+      {/* Scroll hint */}
+      <a href="#social-proof" className="absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-[#C5D3F8] hover:text-[#2E5CFF] transition-colors">
+        <ChevronDown size={22} className="animate-bounce" />
+      </a>
     </section>
   );
 }

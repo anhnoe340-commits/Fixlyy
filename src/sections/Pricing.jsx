@@ -1,5 +1,5 @@
-import PricingCard from '../components/PricingCard';
 import { Check } from 'lucide-react';
+import PricingCard from '../components/PricingCard';
 
 const plans = [
   {
@@ -8,7 +8,7 @@ const plans = [
     features: [
       '150 appels/mois inclus',
       'Secrétaire IA 24/7',
-      'SMS résumé 30sec',
+      'SMS résumé en 30 sec',
       'Génération devis auto',
       'Dashboard web',
       '1 utilisateur',
@@ -46,52 +46,53 @@ const plans = [
       'SLA 99.9%',
       'Support <30min',
     ],
-    cta: 'Contacter pour Équipe',
+    cta: 'Nous contacter',
     ctaVariant: 'outline',
     popular: false,
   },
 ];
 
-const notes = [
-  'Sans engagement — Résiliable à tout moment',
-  'Essai 7 jours gratuit sans carte bancaire',
-  'Setup 30min offert avec notre équipe',
+const guarantees = [
+  'Sans engagement — résiliable à tout moment',
+  '7 jours gratuits sans carte bancaire',
+  'Setup 30min offert',
 ];
 
 export default function Pricing() {
-  const scrollToForm = () => {
-    document.getElementById('inscription')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const scroll = () => document.getElementById('inscription')?.scrollIntoView({ behavior: 'smooth' });
 
   return (
-    <section className="py-20 md:py-28 bg-[#F7F9FC]" id="tarifs">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="section-light py-20 md:py-28" id="tarifs">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+
         {/* Header */}
         <div className="text-center mb-16">
-          <span className="inline-block bg-blue-100 text-[#2E5CFF] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
-            Tarifs simples
+          <span className="inline-block bg-[#EEF3FF] border border-[#C5D3F8] text-[#2E5CFF] text-xs font-bold px-4 py-1.5 rounded-full mb-5 uppercase tracking-widest">
+            Tarifs transparents
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A1628]">
             Choisissez votre plan
           </h2>
-          <p className="mt-4 text-lg text-[#0A1628]/60">
-            Tous les plans incluent un essai gratuit de 7 jours.
+          <p className="mt-3 text-[#64748B] max-w-md mx-auto">
+            Tous les plans incluent 7 jours gratuits. Aucune surprise.
           </p>
         </div>
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-6 items-start">
-          {plans.map((p) => (
-            <PricingCard key={p.plan} {...p} onCtaClick={scrollToForm} />
+        {/* Cards — Pro elevated on desktop */}
+        <div className="grid sm:grid-cols-3 gap-6 items-start">
+          {plans.map((p, i) => (
+            <div key={p.plan} className={p.popular ? 'sm:-mt-4 sm:-mb-4' : ''}>
+              <PricingCard {...p} onCtaClick={scroll} />
+            </div>
           ))}
         </div>
 
-        {/* Notes */}
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
-          {notes.map((note) => (
-            <div key={note} className="flex items-center gap-2 text-[#0A1628]/60 text-sm">
-              <Check size={16} className="text-[#10B981] flex-shrink-0" />
-              {note}
+        {/* Guarantees */}
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 flex-wrap">
+          {guarantees.map(g => (
+            <div key={g} className="flex items-center gap-2 text-[#64748B] text-sm">
+              <Check size={15} className="text-[#10B981] flex-shrink-0" />
+              {g}
             </div>
           ))}
         </div>

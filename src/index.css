@@ -1,156 +1,93 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap');
 @import "tailwindcss";
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* ─── Reset ───────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  font-size: 16px;
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   background: #ffffff;
   color: #0A1628;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  line-height: 1.65;
 }
 
-#root {
-  width: 100%;
-}
+#root { width: 100%; overflow-x: hidden; }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #F7F9FC;
-}
-::-webkit-scrollbar-thumb {
-  background: #2E5CFF;
-  border-radius: 3px;
-}
+/* ─── Monospace ─────────────────────────────────────────────── */
+.mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
 
-/* Ticker animation */
+/* ─── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #2E5CFF; border-radius: 4px; }
+
+/* ─── Ticker ────────────────────────────────────────────────── */
 @keyframes ticker {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
-.ticker-animation {
-  animation: ticker 25s linear infinite;
-}
+.ticker-animation      { animation: ticker 30s linear infinite; }
+.ticker-animation-slow { animation: ticker 42s linear infinite reverse; }
 
-@keyframes ticker-slow {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+/* ─── Hero glow ─────────────────────────────────────────────── */
+@keyframes floatBlob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(30px, -20px) scale(1.05); }
+  66%       { transform: translate(-20px, 15px) scale(0.97); }
 }
-.ticker-animation-slow {
-  animation: ticker-slow 35s linear infinite;
-}
+.blob-animate { animation: floatBlob 12s ease-in-out infinite; }
+.blob-animate-alt { animation: floatBlob 16s ease-in-out infinite reverse; }
 
-/* Phone ring animation */
+/* ─── Countdown ─────────────────────────────────────────────── */
+.countdown-ring { transition: stroke-dashoffset 1s linear; }
+
+@keyframes pulseBlue {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(46,92,255,0.4); }
+  50%       { box-shadow: 0 0 0 14px rgba(46,92,255,0); }
+}
+.pulse-blue { animation: pulseBlue 1.4s ease-in-out infinite; }
+
+/* ─── Phone ring ────────────────────────────────────────────── */
 @keyframes phoneRing {
-  0%, 100% { transform: rotate(0deg); }
-  10% { transform: rotate(-15deg); }
-  20% { transform: rotate(15deg); }
-  30% { transform: rotate(-10deg); }
-  40% { transform: rotate(10deg); }
-  50% { transform: rotate(-5deg); }
-  60% { transform: rotate(5deg); }
-  70% { transform: rotate(0deg); }
+  0%, 65%, 100% { transform: rotate(0deg); }
+  70%  { transform: rotate(-14deg); }
+  78%  { transform: rotate(14deg); }
+  85%  { transform: rotate(-8deg); }
+  92%  { transform: rotate(8deg); }
 }
-.phone-ring {
-  animation: phoneRing 2s ease-in-out infinite;
-  display: inline-block;
-}
+.phone-ring { animation: phoneRing 3s ease-in-out infinite; display: inline-block; }
 
-/* Pulse animation */
-@keyframes pulse-orange {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.4); }
-  50% { box-shadow: 0 0 0 20px rgba(255, 107, 53, 0); }
-}
-.pulse-orange {
-  animation: pulse-orange 1.5s ease-in-out infinite;
-}
-
-/* Draw line animation */
-@keyframes drawLine {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-/* Fade in up */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
-}
-
-/* Notification bounce */
-@keyframes notifBounce {
-  0% { transform: translateY(-100px); opacity: 0; }
-  60% { transform: translateY(10px); opacity: 1; }
-  80% { transform: translateY(-5px); }
-  100% { transform: translateY(0); opacity: 1; }
-}
-.notif-bounce {
-  animation: notifBounce 0.8s ease-out forwards;
-}
-
-/* Step appear */
-@keyframes stepAppear {
-  from { opacity: 0; transform: scale(0.8); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-/* Gradient animation for hero */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-.gradient-animated {
-  background-size: 200% 200%;
-  animation: gradientShift 8s ease infinite;
-}
-
-/* Countdown circle */
-.countdown-ring {
-  transition: stroke-dashoffset 1s linear;
-}
-
-/* FAQ accordion */
+/* ─── FAQ accordion ─────────────────────────────────────────── */
 .faq-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.3s ease;
+  transition: max-height 0.36s cubic-bezier(0.4,0,0.2,1);
 }
-.faq-content.open {
-  max-height: 500px;
+.faq-content.open { max-height: 400px; }
+
+/* ─── Gradient text ─────────────────────────────────────────── */
+.text-gradient {
+  background: linear-gradient(135deg, #2E5CFF 0%, #00D4FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* Gen step appear */
-@keyframes genStep {
-  from { opacity: 0; transform: translateX(-20px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-.gen-step-anim {
-  animation: genStep 0.4s ease-out forwards;
-  opacity: 0;
-}
+/* ─── Section divider wave ──────────────────────────────────── */
+.section-white  { background: #ffffff; }
+.section-light  { background: #F5F8FF; }
 
-/* Monospace pricing numbers */
-.mono {
-  font-family: 'JetBrains Mono', monospace;
+/* ─── Fade-in-up ────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
-/* Section transitions */
-section {
-  position: relative;
-}
+.fade-in-up { animation: fadeInUp 0.5s ease-out forwards; }

@@ -13,7 +13,6 @@ export default function CountdownTimer() {
         if (prev <= 1) {
           clearInterval(intervalRef.current);
           setIsZero(true);
-          // Restart after 3 seconds
           setTimeout(startCountdown, 3000);
           return 0;
         }
@@ -28,50 +27,31 @@ export default function CountdownTimer() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const radius = 54;
+  const radius = 42;
   const circumference = 2 * Math.PI * radius;
   const progress = (count / 10) * circumference;
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <div className={`relative w-36 h-36 ${isZero ? 'pulse-orange' : ''}`}>
-        <svg className="w-full h-full -rotate-90" viewBox="0 0 120 120">
-          {/* Background circle */}
-          <circle
-            cx="60"
-            cy="60"
-            r={radius}
-            fill="none"
-            stroke="rgba(255,255,255,0.1)"
-            strokeWidth="8"
-          />
-          {/* Progress circle */}
-          <circle
-            cx="60"
-            cy="60"
-            r={radius}
-            fill="none"
+      <div className={`relative w-24 h-24 ${isZero ? 'pulse-orange' : ''}`}>
+        <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r={radius} fill="none"
+            stroke="rgba(255,255,255,0.08)" strokeWidth="7" />
+          <circle cx="50" cy="50" r={radius} fill="none"
             stroke={isZero ? '#FF6B35' : '#2E5CFF'}
-            strokeWidth="8"
-            strokeLinecap="round"
+            strokeWidth="7" strokeLinecap="round"
             strokeDasharray={circumference}
             strokeDashoffset={circumference - progress}
-            className="countdown-ring"
-          />
+            className="countdown-ring" />
         </svg>
-        {/* Number */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <span
-            className={`font-black text-5xl mono transition-colors duration-300 ${
-              isZero ? 'text-[#FF6B35]' : 'text-white'
-            }`}
-          >
+          <span className={`font-black text-3xl mono leading-none transition-colors duration-300 ${isZero ? 'text-[#FF6B35]' : 'text-white'}`}>
             {isZero ? '!' : count}
           </span>
         </div>
       </div>
       {isZero && (
-        <p className="text-[#FF6B35] font-bold text-lg animate-pulse">
+        <p className="text-[#FF6B35] font-bold text-sm tracking-widest uppercase animate-pulse">
           Alors ?
         </p>
       )}

@@ -2,98 +2,98 @@ import { Phone, FileText, MessageSquare } from 'lucide-react';
 
 export default function Solution() {
   return (
-    <section className="py-20 md:py-28 bg-white" id="fonctionnalites">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="section-light py-20 md:py-28" id="fonctionnalites">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+
         {/* Header */}
-        <div className="text-center mb-16">
-          <span className="inline-block bg-blue-100 text-[#2E5CFF] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
-            La solution
+        <div className="text-center mb-14">
+          <span className="inline-block bg-[#EEF3FF] border border-[#C5D3F8] text-[#2E5CFF] text-xs font-bold px-4 py-1.5 rounded-full mb-5 uppercase tracking-widest">
+            La solution Fixlyy
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A1628] leading-tight">
-            Fixlyy = Votre secrétaire IA
-            <br />
-            <span className="text-[#2E5CFF]">pendant que VOUS travaillez</span>
+            Votre secrétaire IA
+            <br /><span className="text-gradient">pendant que VOUS travaillez</span>
           </h2>
+          <p className="mt-4 text-base sm:text-lg text-[#64748B] max-w-xl mx-auto">
+            Fixlyy gère tous vos appels, génère vos devis et vous envoie un résumé en 30 secondes.
+          </p>
         </div>
 
-        {/* Features grid */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {/* Feature 1 */}
-          <div className="rounded-2xl border border-gray-100 bg-[#F7F9FC] p-8 flex flex-col gap-5">
-            <div className="w-14 h-14 bg-[#2E5CFF]/10 rounded-xl flex items-center justify-center">
-              <Phone size={28} className="text-[#2E5CFF]" />
-            </div>
-            <h3 className="font-black text-[#0A1628] text-lg uppercase tracking-wide">
-              Répond 24/7 à vos appels
-            </h3>
-            <div className="space-y-2 text-[#0A1628]/70">
-              <p>Client appelle à 21h le dimanche ?</p>
-              <p className="font-bold text-[#2E5CFF] text-lg">Fixlyy décroche.</p>
-              <p>Pose les bonnes questions.</p>
-              <p>Note tout automatiquement.</p>
-            </div>
-            <div className="mt-auto pt-4 border-t border-gray-200">
-              <p className="font-semibold text-[#10B981]">Vous ? Vous dormez tranquille.</p>
-            </div>
-          </div>
+        {/* Cards */}
+        <div className="grid md:grid-cols-3 gap-5">
 
-          {/* Feature 2 - Accent */}
-          <div className="rounded-2xl bg-[#0A1628] p-8 flex flex-col gap-5 shadow-xl">
-            <div className="w-14 h-14 bg-[#2E5CFF]/30 rounded-xl flex items-center justify-center">
-              <FileText size={28} className="text-[#00D4FF]" />
+          {/* Card 1 */}
+          <div className="bg-white rounded-2xl border border-[#DDE5F8] p-7 flex flex-col gap-5 hover:shadow-lg hover:-translate-y-1 transition-all duration-200">
+            <div className="w-12 h-12 bg-[#EEF3FF] rounded-xl flex items-center justify-center">
+              <Phone size={24} className="text-[#2E5CFF]" />
             </div>
-            <h3 className="font-black text-white text-lg uppercase tracking-wide">
-              Génère vos devis automatiquement
-            </h3>
-            <div className="space-y-1 text-white/60 text-sm">
-              <p className="text-white/80">Fuite d'eau cuisine ? Fixlyy calcule :</p>
-              <ul className="mt-3 space-y-1.5">
-                {[
-                  ['Diagnostic', '80€'],
-                  ['Main d\'œuvre', '120€'],
-                  ['Pièces', '45€'],
-                ].map(([label, val]) => (
-                  <li key={label} className="flex justify-between text-white/60">
-                    <span>{label}</span>
-                    <span className="mono font-semibold text-white/80">{val}</span>
-                  </li>
-                ))}
-                <li className="flex justify-between border-t border-white/20 pt-1.5 text-white font-black">
-                  <span>Total</span>
-                  <span className="mono text-[#00D4FF]">245€ TTC</span>
-                </li>
-              </ul>
-            </div>
-            <p className="font-bold text-[#00D4FF]">PDF envoyé au client en 2 min.</p>
-            <div className="mt-auto pt-4 border-t border-white/10">
-              <p className="font-semibold text-[#10B981]">Vous ? Vous validez en 1 clic.</p>
-            </div>
-          </div>
-
-          {/* Feature 3 */}
-          <div className="rounded-2xl border border-gray-100 bg-[#F7F9FC] p-8 flex flex-col gap-5">
-            <div className="w-14 h-14 bg-[#2E5CFF]/10 rounded-xl flex items-center justify-center">
-              <MessageSquare size={28} className="text-[#2E5CFF]" />
-            </div>
-            <h3 className="font-black text-[#0A1628] text-lg uppercase tracking-wide">
-              SMS résumé en 30 secondes
-            </h3>
-            {/* SMS mockup */}
-            <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
-              <p className="text-xs text-gray-400 mb-2 font-medium">SMS reçu — Fixlyy</p>
-              <div className="text-sm space-y-1 font-mono text-[#0A1628]">
-                <p>🔔 <strong>M. Dupont</strong></p>
-                <p>⚠️ Urgence : OUI</p>
-                <p>🔧 Fuite cuisine</p>
-                <p>📍 15 rue X, 75015</p>
-                <p>💶 Budget : 200-300€</p>
-                <p>📞 06 12 34 56 78</p>
-                <p className="text-[#2E5CFF]">📄 [Devis PDF]</p>
-                <p className="font-bold text-[#FF6B35]">Rappeler ?</p>
+            <div>
+              <h3 className="font-black text-[#0A1628] text-base uppercase tracking-wide mb-3">
+                Répond 24/7 à vos appels
+              </h3>
+              <div className="space-y-1.5 text-sm text-[#64748B]">
+                <p>Client appelle à 21h un dimanche ?</p>
+                <p className="font-bold text-[#2E5CFF]">Fixlyy décroche.</p>
+                <p>Pose les bonnes questions, note tout.</p>
               </div>
             </div>
-            <div className="mt-auto pt-4 border-t border-gray-200">
-              <p className="font-semibold text-[#10B981]">Vous décidez. En 5 secondes.</p>
+            <div className="mt-auto pt-4 border-t border-[#F0F4FF]">
+              <p className="text-sm font-semibold text-[#10B981]">→ Vous dormez tranquille.</p>
+            </div>
+          </div>
+
+          {/* Card 2 — featured */}
+          <div className="bg-[#2E5CFF] rounded-2xl p-7 flex flex-col gap-5 shadow-[0_8px_40px_rgba(46,92,255,0.3)] hover:-translate-y-1 transition-all duration-200">
+            <div className="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center">
+              <FileText size={24} className="text-white" />
+            </div>
+            <div>
+              <h3 className="font-black text-white text-base uppercase tracking-wide mb-3">
+                Génère vos devis auto
+              </h3>
+              <div className="bg-white/10 rounded-xl p-4 space-y-1.5 text-sm">
+                {[['Diagnostic', '80€'], ["Main d'œuvre", '120€'], ['Pièces', '45€']].map(([l, v]) => (
+                  <div key={l} className="flex justify-between text-white/75">
+                    <span>{l}</span>
+                    <span className="mono font-semibold text-white/90">{v}</span>
+                  </div>
+                ))}
+                <div className="flex justify-between border-t border-white/20 pt-1.5 font-black text-white">
+                  <span>Total TTC</span>
+                  <span className="mono">245€</span>
+                </div>
+              </div>
+              <p className="mt-3 text-sm font-bold text-[#00D4FF]">PDF envoyé au client en 2 min.</p>
+            </div>
+            <div className="mt-auto pt-4 border-t border-white/15">
+              <p className="text-sm font-semibold text-white/80">→ Vous validez en 1 clic.</p>
+            </div>
+          </div>
+
+          {/* Card 3 */}
+          <div className="bg-white rounded-2xl border border-[#DDE5F8] p-7 flex flex-col gap-5 hover:shadow-lg hover:-translate-y-1 transition-all duration-200">
+            <div className="w-12 h-12 bg-[#EEF3FF] rounded-xl flex items-center justify-center">
+              <MessageSquare size={24} className="text-[#2E5CFF]" />
+            </div>
+            <div>
+              <h3 className="font-black text-[#0A1628] text-base uppercase tracking-wide mb-3">
+                SMS résumé en 30 sec
+              </h3>
+              {/* SMS */}
+              <div className="bg-[#F5F8FF] rounded-xl border border-[#DDE5F8] p-4">
+                <p className="text-[10px] font-bold text-[#94A3B8] uppercase tracking-wider mb-2">SMS · Fixlyy</p>
+                <div className="text-xs space-y-1 font-mono text-[#0A1628]">
+                  <p>🔔 <strong>M. Dupont</strong></p>
+                  <p>⚠️ Urgence : OUI</p>
+                  <p>🔧 Fuite cuisine · Paris 15</p>
+                  <p>💶 Budget 200-300€</p>
+                  <p>📞 06 12 34 56 78</p>
+                  <p className="text-[#2E5CFF] font-bold">📄 [Devis PDF]</p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-auto pt-4 border-t border-[#F0F4FF]">
+              <p className="text-sm font-semibold text-[#10B981]">→ Vous décidez en 5 sec.</p>
             </div>
           </div>
         </div>
