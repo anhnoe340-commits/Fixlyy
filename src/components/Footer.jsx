@@ -58,7 +58,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#060E1F] text-white">
+    <footer className="bg-[#0A1628] text-white">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
 
         {/* Top */}
@@ -67,7 +67,7 @@ export default function Footer() {
           {/* Brand — spans 2 cols */}
           <div className="col-span-2 md:col-span-2">
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-8 bg-[#2E5CFF] rounded-lg flex items-center justify-center shadow-[0_2px_12px_rgba(46,92,255,0.5)]">
+              <div className="w-8 h-8 bg-[#FF6B35] rounded-lg flex items-center justify-center shadow-[0_2px_12px_rgba(255,107,53,0.4)]">
                 <Zap size={15} className="text-white" fill="white" />
               </div>
               <span className="font-extrabold text-xl tracking-tight">Fixlyy</span>
@@ -83,7 +83,7 @@ export default function Footer() {
                 { href: 'https://twitter.com/fixlyy', Icon: XIcon, label: 'X' },
               ].map(({ href, Icon, label }) => (
                 <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label}
-                  className="w-8 h-8 rounded-lg bg-white/8 flex items-center justify-center hover:bg-[#2E5CFF] transition-colors">
+                  className="w-8 h-8 rounded-lg bg-white/8 flex items-center justify-center hover:bg-[#FF6B35] transition-colors">
                   <Icon />
                 </a>
               ))}
@@ -97,7 +97,7 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 {col.links.map(l => (
                   <li key={l.label}>
-                    <a href={l.href} className="text-white/55 hover:text-white text-sm transition-colors">
+                    <a href={l.href} className="text-white/55 hover:text-[#FF6B35] text-sm transition-colors">
                       {l.label}
                     </a>
                   </li>
@@ -109,14 +109,14 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-white/30 text-xs">
-          <p>© {year} Fixlyy — Votre secrétaire IA 24/7</p>
+          <p>© {year} Fixlyy — Tous droits réservés</p>
           <div className="flex items-center gap-4 flex-wrap justify-center">
-            <a href="mailto:noe@fixlyy.fr" className="flex items-center gap-1.5 hover:text-white/60 transition-colors">
+            <a href="mailto:noe@fixlyy.fr" className="flex items-center gap-1.5 hover:text-[#FF6B35] transition-colors">
               <Mail size={12} />noe@fixlyy.fr
             </a>
-            <span className="flex items-center gap-1.5">
-              <MapPin size={12} />Paris, Île-de-France
-            </span>
+            <a href="#" className="hover:text-[#FF6B35] transition-colors">Mentions légales</a>
+            <a href="#" className="hover:text-[#FF6B35] transition-colors">CGV</a>
+            <a href="#" className="hover:text-[#FF6B35] transition-colors">Contact</a>
           </div>
         </div>
       </div>

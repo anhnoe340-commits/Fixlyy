@@ -17,21 +17,21 @@ const faqs = [
 export default function FAQAccordion() {
   const [open, setOpen] = useState(null);
   return (
-    <div className="space-y-2.5">
+    <div className="space-y-3">
       {faqs.map((item, i) => (
-        <div key={i} className={`bg-white border rounded-xl overflow-hidden transition-all duration-200 ${open === i ? 'border-[#C5D3F8] shadow-sm' : 'border-[#DDE5F8]'}`}>
+        <div key={i} className={`bg-white border-2 rounded-xl overflow-hidden transition-all duration-200 ${open === i ? 'border-[#FF6B35] shadow-[0_4px_12px_rgba(255,107,53,0.08)]' : 'border-[#E5E7EB]'}`}>
           <button
             onClick={() => setOpen(open === i ? null : i)}
-            className="w-full flex items-center justify-between px-5 sm:px-6 py-4 text-left hover:bg-[#F5F8FF] transition-colors group">
-            <span className={`font-semibold pr-4 text-sm sm:text-base transition-colors ${open === i ? 'text-[#2E5CFF]' : 'text-[#0A1628]'}`}>
+            className="w-full flex items-center justify-between px-5 sm:px-6 py-4.5 text-left hover:bg-[#F7F9FC] transition-colors group">
+            <span className={`font-bold pr-4 text-sm sm:text-base transition-colors ${open === i ? 'text-[#FF6B35]' : 'text-[#1a1a1a]'}`}>
               {item.q}
             </span>
-            <span className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all ${open === i ? 'bg-[#2E5CFF] text-white' : 'bg-[#F0F4FF] text-[#2E5CFF] group-hover:bg-[#DDE5F8]'}`}>
+            <span className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all ${open === i ? 'bg-[#FF6B35] text-white' : 'bg-[#F3F4F6] text-[#FF6B35] group-hover:bg-[#E5E7EB]'}`}>
               {open === i ? <Minus size={14} /> : <Plus size={14} />}
             </span>
           </button>
           <div className={`faq-content ${open === i ? 'open' : ''}`}>
-            <p className="px-5 sm:px-6 pb-4 text-[#64748B] text-sm leading-relaxed">{item.a}</p>
+            <p className="px-5 sm:px-6 pb-5 text-[#6B7280] text-sm leading-relaxed">{item.a}</p>
           </div>
         </div>
       ))}

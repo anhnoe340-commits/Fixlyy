@@ -14,7 +14,7 @@ const plans = [
       '1 utilisateur',
       'Support email',
     ],
-    cta: 'Essayer 7 jours gratuit',
+    cta: 'Configurer ma commande →',
     ctaVariant: 'outline',
     popular: false,
   },
@@ -31,7 +31,7 @@ const plans = [
       'Support prioritaire <1h',
       'Intégrations (calendrier, compta)',
     ],
-    cta: 'Commencer avec Pro',
+    cta: 'Nous contacter →',
     popular: true,
   },
   {
@@ -46,7 +46,7 @@ const plans = [
       'SLA 99.9%',
       'Support <30min',
     ],
-    cta: 'Nous contacter',
+    cta: 'Nous contacter →',
     ctaVariant: 'outline',
     popular: false,
   },
@@ -62,25 +62,26 @@ export default function Pricing() {
   const scroll = () => document.getElementById('inscription')?.scrollIntoView({ behavior: 'smooth' });
 
   return (
-    <section className="section-light py-20 md:py-28" id="tarifs">
+    <section className="section-white py-20 md:py-28 lg:py-32" id="tarifs">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
 
         {/* Header */}
-        <div className="text-center mb-16">
-          <span className="inline-block bg-[#EEF3FF] border border-[#C5D3F8] text-[#2E5CFF] text-xs font-bold px-4 py-1.5 rounded-full mb-5 uppercase tracking-widest">
-            Tarifs transparents
+        <div className="mb-16">
+          <span className="inline-block bg-[#FFF7ED] border border-[#FDBA74] text-[#EA580C] text-xs font-bold px-4 py-1.5 rounded-full mb-5 uppercase tracking-widest">
+            Tarifs
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A1628]">
-            Choisissez votre plan
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1a1a1a]">
+            Investis dans
+            <br /><span className="highlight-italic">ta croissance.</span>
           </h2>
-          <p className="mt-3 text-[#64748B] max-w-md mx-auto">
-            Tous les plans incluent 7 jours gratuits. Aucune surprise.
+          <p className="mt-4 text-[#6B7280] max-w-md leading-relaxed">
+            Une bonne landing page se rembourse dès les premières semaines.
           </p>
         </div>
 
         {/* Cards — Pro elevated on desktop */}
         <div className="grid sm:grid-cols-3 gap-6 items-start">
-          {plans.map((p, i) => (
+          {plans.map((p) => (
             <div key={p.plan} className={p.popular ? 'sm:-mt-4 sm:-mb-4' : ''}>
               <PricingCard {...p} onCtaClick={scroll} />
             </div>
@@ -88,10 +89,10 @@ export default function Pricing() {
         </div>
 
         {/* Guarantees */}
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 flex-wrap">
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 flex-wrap">
           {guarantees.map(g => (
-            <div key={g} className="flex items-center gap-2 text-[#64748B] text-sm">
-              <Check size={15} className="text-[#10B981] flex-shrink-0" />
+            <div key={g} className="flex items-center gap-2 text-[#6B7280] text-sm">
+              <Check size={15} className="text-[#FF6B35] flex-shrink-0" />
               {g}
             </div>
           ))}

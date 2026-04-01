@@ -32,7 +32,7 @@ export default function SocialProof() {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 md:gap-4">
           {stats.map((s) => (
             <div key={s.label} className="text-center">
-              <p className="mono font-black text-2xl sm:text-3xl text-[#2E5CFF]">{s.val}</p>
+              <p className="mono font-black text-2xl sm:text-3xl text-[#FF6B35]">{s.val}</p>
               <p className="text-white/50 text-xs sm:text-sm mt-1 leading-tight">{s.label}</p>
             </div>
           ))}
@@ -49,7 +49,7 @@ export default function SocialProof() {
             {[...ticker1, ...ticker1].map((s, i) => (
               <span key={i} className="inline-flex items-center text-white/60 text-sm font-medium px-6">
                 {s}
-                <span className="text-[#2E5CFF]/40 ml-6">•</span>
+                <span className="text-[#FF6B35]/40 ml-6">•</span>
               </span>
             ))}
           </div>
@@ -57,7 +57,7 @@ export default function SocialProof() {
         <div className="flex">
           <div className="flex ticker-animation-slow whitespace-nowrap">
             {[...ticker2, ...ticker2].map((t, i) => (
-              <span key={i} className="inline-flex items-center text-[#00D4FF]/50 text-xs italic px-6">
+              <span key={i} className="inline-flex items-center text-[#FF6B35]/50 text-xs italic px-6">
                 {t}
                 <span className="text-white/20 ml-6 not-italic">•</span>
               </span>

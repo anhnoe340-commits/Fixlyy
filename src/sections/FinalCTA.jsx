@@ -29,13 +29,13 @@ export default function FinalCTA() {
   };
 
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden bg-[#2E5CFF]" id="inscription">
+    <section className="relative py-20 md:py-28 lg:py-32 overflow-hidden bg-[#0A1628]" id="inscription">
 
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#00D4FF]/10 rounded-full blur-3xl" />
-        <div className="absolute inset-0 opacity-[0.04]"
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#FF6B35]/8 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#2E5CFF]/8 rounded-full blur-3xl" />
+        <div className="absolute inset-0 opacity-[0.03]"
           style={{ backgroundImage: 'radial-gradient(white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
       </div>
 
@@ -43,20 +43,20 @@ export default function FinalCTA() {
 
         {/* Header */}
         <div className="text-center mb-10">
-          <span className="inline-block bg-white/15 border border-white/25 text-white text-xs font-bold px-4 py-1.5 rounded-full mb-6 uppercase tracking-widest">
+          <span className="inline-block bg-white/10 border border-white/20 text-[#FF6B35] text-xs font-bold px-4 py-1.5 rounded-full mb-6 uppercase tracking-widest">
             Dernière chance
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight mb-6">
             Vous avez lu jusqu'ici.
           </h2>
-          <div className="space-y-2 text-white/75 text-base sm:text-lg">
+          <div className="space-y-2 text-white/70 text-base sm:text-lg">
             <p>Ça veut dire que vous en avez <strong className="text-white">MARRE</strong> de rater des appels.</p>
             <p>Que vous voulez récupérer ces{' '}
-              <span className="mono font-black text-white text-xl">28 800€</span>/an.
+              <span className="mono font-black text-[#FF6B35] text-xl">28 800€</span>/an.
             </p>
           </div>
-          <p className="mt-5 text-[#00D4FF] font-black text-lg">Alors faites le premier pas.</p>
-          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 mt-3 text-white/60 text-sm">
+          <p className="mt-5 text-[#FF6B35] font-black text-lg italic">Alors faites le premier pas.</p>
+          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 mt-3 text-white/50 text-sm">
             <span>✓ Pas d'engagement</span>
             <span>✓ Pas de risque</span>
             <span>✓ 7 jours pour tester</span>
@@ -75,56 +75,56 @@ export default function FinalCTA() {
           </div>
         ) : (
           <form onSubmit={handleSubmit(onSubmit)} noValidate
-            className="bg-white rounded-2xl shadow-[0_16px_60px_rgba(0,0,0,0.2)] p-7 sm:p-8 space-y-4">
+            className="bg-white rounded-2xl shadow-[0_16px_60px_rgba(0,0,0,0.3)] p-7 sm:p-8 space-y-5">
 
             {/* Prénom */}
             <div>
-              <label className="block text-[#0A1628] text-sm font-semibold mb-1.5">Prénom</label>
+              <label className="block text-[#1a1a1a] text-sm font-bold mb-2">Prénom</label>
               <input {...register('prenom')} placeholder="Votre prénom"
-                className="w-full bg-[#F5F8FF] border border-[#DDE5F8] rounded-xl px-4 py-3 text-[#0A1628] placeholder:text-[#94A3B8] text-sm focus:outline-none focus:ring-2 focus:ring-[#2E5CFF] focus:border-transparent transition-all" />
-              {errors.prenom && <p className="text-[#DC2626] text-xs mt-1">{errors.prenom.message}</p>}
+                className="w-full bg-[#F7F9FC] border-2 border-[#E5E7EB] rounded-xl px-4 py-3.5 text-[#1a1a1a] placeholder:text-[#9CA3AF] text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B35] focus:border-transparent transition-all" />
+              {errors.prenom && <p className="text-[#DC2626] text-xs mt-1.5">{errors.prenom.message}</p>}
             </div>
 
             {/* Email */}
             <div>
-              <label className="block text-[#0A1628] text-sm font-semibold mb-1.5">Email professionnel</label>
+              <label className="block text-[#1a1a1a] text-sm font-bold mb-2">Email professionnel</label>
               <input {...register('email')} type="email" placeholder="votre@email.fr"
-                className="w-full bg-[#F5F8FF] border border-[#DDE5F8] rounded-xl px-4 py-3 text-[#0A1628] placeholder:text-[#94A3B8] text-sm focus:outline-none focus:ring-2 focus:ring-[#2E5CFF] focus:border-transparent transition-all" />
-              {errors.email && <p className="text-[#DC2626] text-xs mt-1">{errors.email.message}</p>}
+                className="w-full bg-[#F7F9FC] border-2 border-[#E5E7EB] rounded-xl px-4 py-3.5 text-[#1a1a1a] placeholder:text-[#9CA3AF] text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B35] focus:border-transparent transition-all" />
+              {errors.email && <p className="text-[#DC2626] text-xs mt-1.5">{errors.email.message}</p>}
             </div>
 
             {/* Téléphone */}
             <div>
-              <label className="block text-[#0A1628] text-sm font-semibold mb-1.5">Téléphone</label>
+              <label className="block text-[#1a1a1a] text-sm font-bold mb-2">Téléphone</label>
               <input {...register('telephone')} type="tel" placeholder="0612345678"
-                className="w-full bg-[#F5F8FF] border border-[#DDE5F8] rounded-xl px-4 py-3 text-[#0A1628] placeholder:text-[#94A3B8] text-sm focus:outline-none focus:ring-2 focus:ring-[#2E5CFF] focus:border-transparent transition-all" />
-              {errors.telephone && <p className="text-[#DC2626] text-xs mt-1">{errors.telephone.message}</p>}
+                className="w-full bg-[#F7F9FC] border-2 border-[#E5E7EB] rounded-xl px-4 py-3.5 text-[#1a1a1a] placeholder:text-[#9CA3AF] text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B35] focus:border-transparent transition-all" />
+              {errors.telephone && <p className="text-[#DC2626] text-xs mt-1.5">{errors.telephone.message}</p>}
             </div>
 
             {/* Métier */}
             <div>
-              <label className="block text-[#0A1628] text-sm font-semibold mb-2">Votre métier</label>
+              <label className="block text-[#1a1a1a] text-sm font-bold mb-2">Votre métier</label>
               <div className="grid grid-cols-2 gap-3">
                 {[['plombier', '🔧 Plombier'], ['electricien', '⚡ Électricien']].map(([val, label]) => (
                   <label key={val}
-                    className="flex items-center gap-2.5 bg-[#F5F8FF] border border-[#DDE5F8] rounded-xl px-4 py-3 cursor-pointer hover:bg-[#EEF3FF] hover:border-[#C5D3F8] transition-all">
+                    className="flex items-center gap-2.5 bg-[#F7F9FC] border-2 border-[#E5E7EB] rounded-xl px-4 py-3.5 cursor-pointer hover:bg-[#FFF7ED] hover:border-[#FDBA74] transition-all">
                     <input type="checkbox" value={val} {...register('metier')}
-                      className="w-4 h-4 accent-[#2E5CFF] rounded" />
-                    <span className="text-[#0A1628] text-sm font-medium">{label}</span>
+                      className="w-4 h-4 accent-[#FF6B35] rounded" />
+                    <span className="text-[#1a1a1a] text-sm font-medium">{label}</span>
                   </label>
                 ))}
               </div>
-              {errors.metier && <p className="text-[#DC2626] text-xs mt-1">{errors.metier.message}</p>}
+              {errors.metier && <p className="text-[#DC2626] text-xs mt-1.5">{errors.metier.message}</p>}
             </div>
 
             {/* Submit */}
-            <Button type="submit" variant="orange" size="xl" fullWidth>
+            <Button type="submit" variant="primary" size="xl" fullWidth>
               {loading
                 ? <><Loader2 size={18} className="animate-spin" /> Envoi en cours…</>
                 : <>Essayer Fixlyy 7 jours gratuit <ArrowRight size={18} /></>}
             </Button>
 
-            <p className="text-[#94A3B8] text-xs text-center">
+            <p className="text-[#9CA3AF] text-xs text-center">
               Sans carte bancaire · Setup 30min offert · On vous rappelle sous 2h
             </p>
           </form>

@@ -11,9 +11,9 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background: #ffffff;
-  color: #0A1628;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: #FFFFFF;
+  color: #1a1a1a;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   line-height: 1.65;
@@ -21,13 +21,25 @@ body {
 
 #root { width: 100%; overflow-x: hidden; }
 
-/* ─── Monospace ─────────────────────────────────────────────── */
+/* ─── Typography ───────────────────────────────────────────────── */
 .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+h1, h2, h3 {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* ─── Highlight italic (Openshore style) ───────────────────────── */
+.highlight-italic {
+  font-style: italic;
+  color: #FF6B35;
+  font-weight: 600;
+}
 
 /* ─── Scrollbar ─────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: #f1f5f9; }
-::-webkit-scrollbar-thumb { background: #2E5CFF; border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: #FF6B35; border-radius: 4px; }
 
 /* ─── Ticker ────────────────────────────────────────────────── */
 @keyframes ticker {
@@ -49,11 +61,11 @@ body {
 /* ─── Countdown ─────────────────────────────────────────────── */
 .countdown-ring { transition: stroke-dashoffset 1s linear; }
 
-@keyframes pulseBlue {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(46,92,255,0.4); }
-  50%       { box-shadow: 0 0 0 14px rgba(46,92,255,0); }
+@keyframes pulseOrange {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,107,53,0.4); }
+  50%       { box-shadow: 0 0 0 14px rgba(255,107,53,0); }
 }
-.pulse-blue { animation: pulseBlue 1.4s ease-in-out infinite; }
+.pulse-orange { animation: pulseOrange 1.4s ease-in-out infinite; }
 
 /* ─── Phone ring ────────────────────────────────────────────── */
 @keyframes phoneRing {
@@ -73,17 +85,17 @@ body {
 }
 .faq-content.open { max-height: 400px; }
 
-/* ─── Gradient text ─────────────────────────────────────────── */
+/* ─── Gradient text (orange) ───────────────────────────────────── */
 .text-gradient {
-  background: linear-gradient(135deg, #2E5CFF 0%, #00D4FF 100%);
+  background: linear-gradient(135deg, #FF6B35 0%, #FF8A5C 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ─── Section divider wave ──────────────────────────────────── */
-.section-white  { background: #ffffff; }
-.section-light  { background: #F5F8FF; }
+/* ─── Section helpers ──────────────────────────────────────── */
+.section-white  { background: #FFFFFF; }
+.section-light  { background: #F7F9FC; }
 
 /* ─── Fade-in-up ────────────────────────────────────────────── */
 @keyframes fadeInUp {

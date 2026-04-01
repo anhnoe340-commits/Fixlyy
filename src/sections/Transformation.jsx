@@ -19,111 +19,111 @@ export default function Transformation() {
   const roi = saved > 0 ? Math.round((saved / 79) * 100) : 0;
 
   return (
-    <section className="section-light py-20 md:py-28">
+    <section className="section-white py-20 md:py-28 lg:py-32">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
 
         {/* Header */}
-        <div className="text-center mb-14">
-          <span className="inline-block bg-[#EEF3FF] border border-[#C5D3F8] text-[#2E5CFF] text-xs font-bold px-4 py-1.5 rounded-full mb-5 uppercase tracking-widest">
+        <div className="text-center mb-16">
+          <span className="inline-block bg-[#FFF7ED] border border-[#FDBA74] text-[#EA580C] text-xs font-bold px-4 py-1.5 rounded-full mb-5 uppercase tracking-widest">
             Transformation
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A1628]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1a1a1a]">
             Votre vie <span className="text-[#DC2626]">AVANT</span> vs{' '}
-            <span className="text-[#10B981]">APRÈS</span>
+            <span className="text-[#059669]">APRÈS</span>
           </h2>
         </div>
 
         {/* Comparison table */}
-        <div className="bg-white rounded-2xl border border-[#DDE5F8] overflow-hidden shadow-sm mb-8">
+        <div className="bg-white rounded-2xl border-2 border-[#E5E7EB] overflow-hidden shadow-sm mb-8">
           {/* Header row */}
-          <div className="grid grid-cols-[1fr_auto_1fr] bg-[#F5F8FF] border-b border-[#DDE5F8]">
-            <div className="px-5 py-3 text-center">
+          <div className="grid grid-cols-[1fr_auto_1fr] bg-[#F7F9FC] border-b-2 border-[#E5E7EB]">
+            <div className="px-5 py-3.5 text-center">
               <span className="text-sm font-black text-[#DC2626] uppercase tracking-wider">❌ Avant</span>
             </div>
-            <div className="w-px bg-[#DDE5F8]" />
-            <div className="px-5 py-3 text-center">
-              <span className="text-sm font-black text-[#10B981] uppercase tracking-wider">✅ Avec Fixlyy</span>
+            <div className="w-px bg-[#E5E7EB]" />
+            <div className="px-5 py-3.5 text-center">
+              <span className="text-sm font-black text-[#059669] uppercase tracking-wider">✅ Avec Fixlyy</span>
             </div>
           </div>
 
           {/* Rows */}
           {pairs.map(([b, a], i) => (
-            <div key={i} className={`grid grid-cols-[1fr_auto_1fr] ${i % 2 === 0 ? 'bg-white' : 'bg-[#FAFBFF]'} border-b border-[#F0F4FF] last:border-0`}>
+            <div key={i} className={`grid grid-cols-[1fr_auto_1fr] ${i % 2 === 0 ? 'bg-white' : 'bg-[#F7F9FC]'} border-b border-[#F3F4F6] last:border-0`}>
               <div className="px-5 py-3.5 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#DC2626]/40 flex-shrink-0" />
-                <span className="text-sm text-[#64748B] line-through decoration-[#DC2626]/30">{b}</span>
+                <span className="text-sm text-[#6B7280] line-through decoration-[#DC2626]/30">{b}</span>
               </div>
-              <div className="w-px bg-[#F0F4FF]" />
+              <div className="w-px bg-[#F3F4F6]" />
               <div className="px-5 py-3.5 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] flex-shrink-0" />
-                <span className="text-sm font-semibold text-[#0A1628]">{a}</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#059669] flex-shrink-0" />
+                <span className="text-sm font-semibold text-[#1a1a1a]">{a}</span>
               </div>
             </div>
           ))}
 
           {/* Footer row */}
-          <div className="grid grid-cols-[1fr_auto_1fr] bg-[#F5F8FF]">
+          <div className="grid grid-cols-[1fr_auto_1fr] bg-[#F7F9FC] border-t-2 border-[#E5E7EB]">
             <div className="px-5 py-4 text-center">
               <span className="font-black text-[#DC2626] text-base">= CHAOS</span>
             </div>
-            <div className="w-px bg-[#DDE5F8]" />
+            <div className="w-px bg-[#E5E7EB]" />
             <div className="px-5 py-4 text-center">
-              <span className="font-black text-[#10B981] text-base">= CONTRÔLE</span>
+              <span className="font-black text-[#059669] text-base">= CONTRÔLE</span>
             </div>
           </div>
         </div>
 
-        <p className="text-center text-lg font-bold text-[#64748B] mb-12">
+        <p className="text-center text-lg font-bold text-[#6B7280] mb-14">
           La différence ?{' '}
-          <span className="mono text-[#2E5CFF] text-2xl font-black">79€</span>
-          <span className="text-[#94A3B8]">/mois</span>
+          <span className="mono text-[#FF6B35] text-2xl font-black">79€</span>
+          <span className="text-[#9CA3AF]">/mois</span>
         </p>
 
-        {/* ROI Calculator — light */}
-        <div className="bg-white rounded-2xl border border-[#C5D3F8] shadow-[0_4px_32px_rgba(46,92,255,0.08)] overflow-hidden">
-          {/* Blue header */}
-          <div className="bg-[#2E5CFF] px-8 py-6 text-center">
+        {/* ROI Calculator */}
+        <div className="bg-white rounded-2xl border-2 border-[#E5E7EB] shadow-[0_4px_24px_rgba(0,0,0,0.06)] overflow-hidden">
+          {/* Orange header */}
+          <div className="bg-gradient-to-r from-[#FF6B35] to-[#FF8A5C] px-8 py-6 text-center">
             <h3 className="text-white font-black text-xl md:text-2xl">Calculez vos économies</h3>
-            <p className="text-white/70 text-sm mt-1">Déplacez le curseur — résultats en temps réel</p>
+            <p className="text-white/75 text-sm mt-1">Déplacez le curseur — résultats en temps réel</p>
           </div>
 
           <div className="p-8">
             {/* Slider */}
             <div className="mb-8">
               <div className="flex items-center justify-between mb-3">
-                <label className="text-[#0A1628] font-semibold text-sm">
+                <label className="text-[#1a1a1a] font-semibold text-sm">
                   Appels ratés par semaine
                 </label>
-                <span className="mono font-black text-3xl text-[#2E5CFF]">{calls}</span>
+                <span className="mono font-black text-3xl text-[#FF6B35]">{calls}</span>
               </div>
               <input type="range" min="0" max="30" value={calls}
                 onChange={e => setCalls(+e.target.value)}
-                className="w-full h-2 accent-[#2E5CFF] rounded-full cursor-pointer" />
-              <div className="flex justify-between text-xs text-[#94A3B8] mt-1.5">
+                className="w-full h-2 accent-[#FF6B35] rounded-full cursor-pointer" />
+              <div className="flex justify-between text-xs text-[#9CA3AF] mt-1.5">
                 <span>0</span><span>15</span><span>30</span>
               </div>
             </div>
 
             {/* Results */}
             <div className="grid sm:grid-cols-3 gap-4">
-              <div className="bg-[#FFF5F5] border border-[#FECACA] rounded-xl p-5 text-center">
+              <div className="bg-[#FFF5F5] border-2 border-[#FECACA] rounded-xl p-5 text-center">
                 <p className="text-[#DC2626] text-xs font-bold uppercase tracking-wider mb-2">Vous perdez</p>
                 <p className="mono font-black text-2xl text-[#DC2626]">{lost.toLocaleString('fr-FR')}€</p>
-                <p className="text-[#94A3B8] text-xs mt-1">/mois actuellement</p>
+                <p className="text-[#9CA3AF] text-xs mt-1">/mois actuellement</p>
               </div>
-              <div className="bg-[#F0FDF4] border border-[#BBF7D0] rounded-xl p-5 text-center">
+              <div className="bg-[#F0FDF4] border-2 border-[#BBF7D0] rounded-xl p-5 text-center">
                 <p className="text-[#059669] text-xs font-bold uppercase tracking-wider mb-2">Vous récupérez</p>
                 <p className="mono font-black text-2xl text-[#059669]">{saved.toLocaleString('fr-FR')}€</p>
-                <p className="text-[#94A3B8] text-xs mt-1">net/mois</p>
+                <p className="text-[#9CA3AF] text-xs mt-1">net/mois</p>
               </div>
-              <div className="bg-[#EEF3FF] border border-[#C5D3F8] rounded-xl p-5 text-center">
-                <p className="text-[#2E5CFF] text-xs font-bold uppercase tracking-wider mb-2">ROI</p>
-                <p className="mono font-black text-2xl text-[#2E5CFF]">{roi.toLocaleString('fr-FR')}%</p>
-                <p className="text-[#94A3B8] text-xs mt-1">retour sur invest.</p>
+              <div className="bg-[#FFF7ED] border-2 border-[#FDBA74] rounded-xl p-5 text-center">
+                <p className="text-[#FF6B35] text-xs font-bold uppercase tracking-wider mb-2">ROI</p>
+                <p className="mono font-black text-2xl text-[#FF6B35]">{roi.toLocaleString('fr-FR')}%</p>
+                <p className="text-[#9CA3AF] text-xs mt-1">retour sur invest.</p>
               </div>
             </div>
 
-            <div className="mt-7 text-center">
+            <div className="mt-8 text-center">
               <Button variant="primary" size="xl"
                 onClick={() => document.getElementById('inscription')?.scrollIntoView({ behavior: 'smooth' })}>
                 Récupérer mes {lost.toLocaleString('fr-FR')}€/mois <ArrowRight size={18} />
